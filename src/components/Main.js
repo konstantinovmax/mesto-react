@@ -22,32 +22,30 @@ function Main(props) {
     }, []);
 
     return (
-        <>
-            <main className="content">
-                <section className="profile">
-                    <div className="profile__avatar-container">
-                        <img className="profile__avatar" src={ userAvatar } alt="Аватар пользователя" onClick={ props.onEditAvatar } />
+        <main className="content">
+            <section className="profile">
+                <div className="profile__avatar-container">
+                    <img className="profile__avatar" src={ userAvatar } alt="Аватар пользователя" onClick={ props.onEditAvatar } />
+                </div>
+                <div className="profile__info">
+                    <div className="profile__name-edit">
+                        <h1 className="profile__name">{ userName }</h1>
+                        <button type="button" className="profile__edit-button" onClick={ props.onEditProfile } />
                     </div>
-                    <div className="profile__info">
-                        <div className="profile__name-edit">
-                            <h1 className="profile__name">{ userName }</h1>
-                            <button type="button" className="profile__edit-button" onClick={ props.onEditProfile }></button>
-                        </div>
-                        <p className="profile__description">{ userDescription }</p>
-                    </div>           
-                    <button type="button" className="profile__add-button" onClick={ props.onAddPlace }></button>
-                </section>
-                <section className="elements">
-                    { cards.map((card) => (
-                        <Card 
-                        card={ card }
-                        key={ card._id }
-                        onCardClick={ props.onCardClick }
-                        />
-                    ))}
-                </section>
-            </main>
-        </>
+                    <p className="profile__description">{ userDescription }</p>
+                </div>           
+                <button type="button" className="profile__add-button" onClick={ props.onAddPlace } />
+            </section>
+            <section className="elements">
+                { cards.map((card) => (
+                    <Card 
+                    card={ card }
+                    key={ card._id }
+                    onCardClick={ props.onCardClick }
+                    />
+                ))}
+            </section>
+        </main>
     );
 }
 
