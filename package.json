@@ -1,7 +1,6 @@
 {
   "name": "mesto-react",
   "version": "0.1.0",
-  "author": "Maxim Konstantinov",
   "description": "Frontend of the Mesto project",
   "private": true,
   "homepage": "https://konstantinovmax.github.io/mesto-react",
@@ -13,6 +12,11 @@
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
+  },
+  "author": "Maksim Konstantinov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/konstantinovmax/mesto-react/issues"
   },
   "scripts": {
     "start": "react-scripts start",
