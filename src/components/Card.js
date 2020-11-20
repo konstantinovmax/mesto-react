@@ -6,12 +6,12 @@ function Card(props) {
     
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
     const cardLikeButtonClassName = (
-        `element__like-button ${ isLiked ? 'element__like-button_active' : 'element__like-button' }`
+        `element__like-button ${isLiked ? 'element__like-button_active' : 'element__like-button'}`
     );
 
     const isOwn = props.card.owner._id === currentUser._id;
     const cardDeleteButtonClassName = (
-        `element__delete ${ isOwn ? 'element__delete_active' : 'element__delete' }`
+        `element__delete ${isOwn ? 'element__delete_active' : 'element__delete'}`
     );
     
     
@@ -29,14 +29,14 @@ function Card(props) {
 
     return (
         <>
-            <figure className="element" key={ props.card._id }>
-                <button type="button" className={ cardDeleteButtonClassName } onClick={ handleDeleteClick } />
-                <img className="element__image" src={ props.card.link } alt={ props.card.name } onClick={ handleClick }/>
+            <figure className="element" key={props.card._id}>
+                <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick} />
+                <img className="element__image" src={props.card.link} alt={props.card.name} onClick={handleClick}/>
                 <div className="element__caption-container">
-                    <h2 className="element__caption">{ props.card.name }</h2>
+                    <h2 className="element__caption">{props.card.name}</h2>
                     <div className="element__like-area">
-                        <button type="button" className={ cardLikeButtonClassName } onClick={ handleLikeClick } />
-                        <output className="element__like-numbers">{ props.card.likes.length }</output>
+                        <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick} />
+                        <output className="element__like-numbers">{props.card.likes.length}</output>
                     </div>
                 </div>
             </figure>
