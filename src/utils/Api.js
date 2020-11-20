@@ -103,6 +103,14 @@ class Api {
         });
     }
 
+    changeLikeCardStatus(id, isNotLiked) {
+        if (isNotLiked) {
+            return this.putLike(id);
+        } else {
+            return this.deleteLike(id);
+        }
+    }
+
     patchChangeAvatar({ avatarName }) {
         return fetch(`${this._url}users/me/avatar`, {
             method: 'PATCH',
@@ -128,4 +136,4 @@ const api = new Api({
     },
 });
 
-export default api 
+export default api;
