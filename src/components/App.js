@@ -3,7 +3,7 @@ import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import ImagePopup from './ImagePopup.js';
-import api from '../utils/Api.js';
+import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
@@ -14,8 +14,8 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState([]);
-  const [currentUser, setCurrentUser] = React.useState([]);
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
   
 
   function handleEditAvatarClick() {
@@ -38,7 +38,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard([]);
+    setSelectedCard({});
   }
 
   function handleUpdateUser(newUserInfo) {
@@ -100,24 +100,16 @@ function App() {
 
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo()])
-    .then(([user]) => {
+    Promise.all([api.getUserInfo(), api.getAllCards()])
+    .then(([user, cards]) => {
       setCurrentUser(user);
+      setCards(cards);
     })
     .catch((err) => {
       console.log(err);
     });
   }, []);
 
-  React.useEffect(() => {
-    Promise.all([api.getAllCards()])
-    .then(([cards]) => {
-        setCards(cards);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-  }, []);
 
    return (
     <>

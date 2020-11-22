@@ -3,8 +3,8 @@ import PopupWithForm from './PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function EditProfilePopup(props) {
-    const [name, setName] = React.useState();
-    const [description, setDescription] = React.useState();
+    const [name, setName] = React.useState('');
+    const [description, setDescription] = React.useState('');
     const currentUser = React.useContext(CurrentUserContext);
 
     function handleChangeName(e) {
@@ -18,8 +18,8 @@ function EditProfilePopup(props) {
     function handleSubmit(e) {
         e.preventDefault();
         props.onUpdateUser({
-            name: name,
-            description: description
+            name,
+            description
         });
     }
 
@@ -30,9 +30,9 @@ function EditProfilePopup(props) {
 
     return (
         <PopupWithForm isOpen={props.isOpen} name="edit-profile" title="Редактировать профиль" onClose={props.onClose} onSubmit={handleSubmit}>
-            <input id="name-input" name="name" type="text" className="modal__input modal__input_type_name" required value={name || ''} onChange={handleChangeName} placeholder="Введите имя" minLength="2" maxLength="40" />
+            <input id="name-input" name="name" type="text" className="modal__input modal__input_type_name" required value={name} onChange={handleChangeName} placeholder="Введите имя" minLength="2" maxLength="40" />
             <span id="name-input-error" className="modal__input-error"></span>
-            <input id="description-input" name="description" type="text" className="modal__input modal__input_type_description" required value={description || ''} onChange={handleChangeDescription} placeholder="Введите описание" minLength="2" maxLength="200" />
+            <input id="description-input" name="description" type="text" className="modal__input modal__input_type_description" required value={description} onChange={handleChangeDescription} placeholder="Введите описание" minLength="2" maxLength="200" />
             <span id="description-input-error" className="modal__input-error"></span>
         </PopupWithForm>
     );
